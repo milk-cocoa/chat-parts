@@ -1,5 +1,5 @@
 (function(){
-	var html = '<div class="chatparts-header"><p>チャット</p></div><div id="spc-messages"></div><input id="spc-content" class="chatparts-textarea" type="text" placeholder="Enterで投稿"></input>';
+	var html = '<div class="chatparts-header"><p>チャット</p></div><div id="spc-message-area" class="chatparts-messages"><div id="spc-messages"></div></div><input id="spc-content" type="text" placeholder="Enterで投稿"></input>';
 	function escapeHTML(str) {return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");}
 	window.chatpart = {
         start : function(_option) {
@@ -17,10 +17,15 @@
                     if(!e[i].content) continue;
                     $("#spc-messages").append('<div id="'+e[i].id+'">' + escapeHTML(e[i].content) + "</div>");
                 }
+                scroll_to_bottom();
             });
             ds.on("push", function(e) {
                 $("#spc-messages").append('<div id="'+e.id+'">' + escapeHTML(e.value.content) + "</div>");
             });
+            function scroll_to_bottom() {
+                var message_area = document.getElementById("spc-message-area");
+                message_area.scrollTop = message_area.scrollHeight;
+            }
             $('#spc-content').keydown(function (e) {
                 if (e.which == 13){
                     ds.push({

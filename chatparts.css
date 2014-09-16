@@ -13,7 +13,7 @@
 	color: white;
 }
 
-.chatparts-textarea {
-	position: relative;
-	bottom: 0;
+.chatparts-messages {
+	height: 120px;
+	overflow:scroll;
 }
