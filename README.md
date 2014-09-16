@@ -1,15 +1,16 @@
 Contact Parts
 =========
 
-add tag.
+タグを追加してください。
 
-    <script type="text/javascript" src="http://cdn.mlkcca.com/v1.0.0/milkcocoa.js"></script>
+    <link rel="stylesheet" href="chatparts.css">
+    <script type="text/javascript" src="http://cdn.mlkcca.com/v0.2.8/milkcocoa.js"></script>
     <script type="text/javascript" src="http://cdn.mlkcca.com/contact/contact.js"></script>
     
 
-add start code.
+下記のコードで、チャットを表示させています。
 
-    speedchat.start({
+    chatpart.start({
     	host : "https://your-app-id.mlkcca.com",
     	datastore  : "contacts"
     });
