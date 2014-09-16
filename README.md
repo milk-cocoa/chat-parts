@@ -5,12 +5,12 @@ Contact Parts
 
     <link rel="stylesheet" href="chatparts.css">
     <script type="text/javascript" src="http://cdn.mlkcca.com/v0.2.8/milkcocoa.js"></script>
-    <script type="text/javascript" src="http://cdn.mlkcca.com/contact/contact.js"></script>
+    <script type="text/javascript" src="chatparts.js"></script>
     
 
 下記のコードで、チャットを表示させています。
 
     chatpart.start({
-    	host : "https://your-app-id.mlkcca.com",
-    	datastore  : "contacts"
+    	host : "https://[your-app-id].mlkcca.com",
+    	datastore  : "chat"
     });
