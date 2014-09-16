@@ -4,23 +4,26 @@
 	function escapeHTML(str) {return str.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");}
 	window.mlkcca = {
         contact : {
-            start : function(app_id) {
+            start : function(option) {
+                var host = option.host || "https://demo-contact.mlkcca.com";
+                var datastore = option.datastore || "messages";
+                datastore
                 var ele = document.createElement("div");
                 ele.innerHTML = html;
                 document.body.appendChild(ele);
-                var milkcocoa = new MilkCocoa("https://your-app-id.mlkcca.com");
-                var ds = milkcocoa.DataStore("root");
-                ds.child("messages").query({}).done(function(messageStore, e) {
+                var milkcocoa = new MilkCocoa(host);
+                var ds = milkcocoa.DataStore(datastore);
+                ds.query({}).done(function(messageStore, e) {
                     for(var i=0;i < e.length;i++) {
                         if(!e[i].content) continue;
                         $("#spc-messages").append('<div id="'+e[i].id+'">' + escapeHTML(e[i].content) + "</div>");
                     }
                 });
-                ds.child("messages").on("push", function(e) {
+                ds.on("push", function(e) {
                     $("#spc-messages").append('<div id="'+e.id+'">' + escapeHTML(e.value.content) + "</div>");
                 });
                 $("#spc-post").click(function() {
-                    ds.child("messages").push({
+                    ds.push({
                         content : $("#spc-content").val()
                     });
                     $("#spc-content").val("");
