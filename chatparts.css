@@ -1,0 +1,19 @@
+.chatparts {
+	z-index: 99;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: auto;
+	border: solid 1px #2980b9;
+}
+
+.chatparts-header {
+	position: relative;
+	background: #2980b9;
+	color: white;
+}
+
+.chatparts-textarea {
+	position: relative;
+	bottom: 0;
+}
